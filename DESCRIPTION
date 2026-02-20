@@ -1,0 +1,35 @@
+Package: Rnvonturk
+Title: What the Package Does (One Line, Title Case)
+Version: 1.0.0
+Authors@R:
+    person("Nick", "Turkovich", , "nvonturk@mit.edu", role = c("aut", "cre"))
+Description: Personal R utilities package for fixed income and empirical finance
+    research. Provides common data retrieval and connection management tasks
+    including database connections (SQL Server, WRDS, SFTP), FISD bond data,
+    trading calendars, CRSP daily returns, and macro announcement dates.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Imports:
+    bizdays,
+    DBI,
+    dplyr,
+    dotenv,
+    fredr,
+    httr2,
+    lubridate,
+    odbc,
+    pbapply,
+    purrr,
+    readxl,
+    RPostgres,
+    sftp,
+    stringr,
+    tibble
+Suggests:
+    dbplyr
+Remotes:
+    stenevang/sftp
+URL: https://github.com/nvonturk/Rnvonturk
+BugReports: https://github.com/nvonturk/Rnvonturk/issues
