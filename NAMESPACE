@@ -2,6 +2,7 @@
 
 export(create_connections)
 export(fetch_bond_date_sequence)
+export(fetch_compustat_annual)
 export(fetch_fisd_sample)
 export(get_bls_release_dates)
 export(get_daily_returns)
