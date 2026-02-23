@@ -12,7 +12,7 @@ fetch_compustat_annual(start_date, end_date)
 \item{end_date}{Character or Date. End of the sample period (inclusive).}
 }
 \value{
-A tibble with columns: gvkey, datadate, seq, ceq, at, lt,
+A tibble with columns: gvkey, cik, datadate, seq, ceq, at, lt,
 txditc, txdb, itcb, pstkrv, pstkl, pstk, capx, oancf, sale, cogs, xint, xrd, xsga.
 }
 \description{
