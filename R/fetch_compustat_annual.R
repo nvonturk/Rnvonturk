@@ -1,7 +1,7 @@
 # Suppress R CMD check notes for NSE column names
 utils::globalVariables(c(
   "indfmt", "datafmt", "consol", "curcd", "datadate",
-  "gvkey", "seq", "ceq", "at", "lt", "txditc", "txdb", "itcb",
+  "gvkey", "sic", "naics", "seq", "ceq", "at", "lt", "txditc", "txdb", "itcb",
   "pstkrv", "pstkl", "pstk", "capx", "oancf", "sale", "cogs",
   "xint", "xrd", "xsga"
 ))
@@ -28,8 +28,8 @@ utils::globalVariables(c(
 #' @param start_date Character or Date. Start of the sample period (inclusive).
 #' @param end_date Character or Date. End of the sample period (inclusive).
 #'
-#' @return A tibble with columns: gvkey, datadate, seq, ceq, at, lt, txditc,
-#'   txdb, itcb, pstkrv, pstkl, pstk, capx, oancf, sale, cogs, xint, xrd, xsga.
+#' @return A tibble with columns: gvkey, datadate, sic, naics, seq, ceq, at, lt,
+#'   txditc, txdb, itcb, pstkrv, pstkl, pstk, capx, oancf, sale, cogs, xint, xrd, xsga.
 #'
 #' @importFrom dplyr tbl filter select collect
 #' @export
@@ -63,6 +63,8 @@ fetch_compustat_annual <- function(start_date, end_date) {
     select(
       gvkey,
       datadate,
+      sic,
+      naics,
       seq,
       ceq,
       at,

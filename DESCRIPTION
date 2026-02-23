@@ -1,6 +1,6 @@
 Package: Rnvonturk
 Title: What the Package Does (One Line, Title Case)
-Version: 1.1.0
+Version: 1.1.1
 Authors@R:
     person("Nick", "Turkovich", , "nvonturk@mit.edu", role = c("aut", "cre"))
 Description: Personal R utilities package for fixed income and empirical finance
