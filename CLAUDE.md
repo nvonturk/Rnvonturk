@@ -10,6 +10,7 @@ Functions:
 
 - **Database connections**: SQL Server, WRDS, and SFTP via `create_connections()`
 - **Compustat**: Annual accounting fundamentals via `fetch_compustat_annual()`
+- **CRSP monthly**: Monthly stock returns with market cap and CCM links via `fetch_crsp_monthly()`
 - **FISD data**: Filtered corporate bond sample via `fetch_fisd_sample()`
 - **Trading calendars**: Bond trading day sequences via `fetch_bond_date_sequence()`
 - **CRSP returns**: Daily stock returns via `get_daily_returns()`
@@ -36,6 +37,7 @@ pak::pak("nvonturk/Rnvonturk")
 **File structure**: Each exported function lives in its own file under `R/`:
 - `R/create_connections.R` — database connection management
 - `R/fetch_compustat_annual.R` — Compustat annual fundamentals retrieval
+- `R/fetch_crsp_monthly.R` — CRSP monthly stock returns retrieval
 - `R/fetch_fisd_sample.R` — FISD bond data retrieval
 - `R/fetch_bond_date_sequence.R` — trading calendar generation
 - `R/get_bls_dates.R` — BLS macro announcement release dates
