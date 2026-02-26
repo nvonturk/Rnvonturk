@@ -4,12 +4,15 @@
 \alias{fetch_compustat_annual}
 \title{Fetch Compustat Annual Fundamentals}
 \usage{
-fetch_compustat_annual(start_date, end_date)
+fetch_compustat_annual(start_date, end_date, gvkeys = NULL)
 }
 \arguments{
 \item{start_date}{Character or Date. Start of the sample period (inclusive).}
 
 \item{end_date}{Character or Date. End of the sample period (inclusive).}
+
+\item{gvkeys}{Optional character vector of gvkeys to filter on. If NULL
+(default), all firms are returned.}
 }
 \value{
 A tibble with columns: gvkey, cik, datadate, seq, ceq, at, lt,
@@ -38,6 +41,13 @@ Based on the \href{https://www.tidy-finance.org/}{Tidy Finance} implementation.
 compustat <- fetch_compustat_annual(
   start_date = "2000-01-01",
   end_date = "2023-12-31"
+)
+
+# Fetch specific firms
+compustat <- fetch_compustat_annual(
+  start_date = "2000-01-01",
+  end_date = "2023-12-31",
+  gvkeys = c("001690", "002968")
 )
 }
 }

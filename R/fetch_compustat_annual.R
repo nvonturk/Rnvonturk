@@ -27,6 +27,8 @@ utils::globalVariables(c(
 #'
 #' @param start_date Character or Date. Start of the sample period (inclusive).
 #' @param end_date Character or Date. End of the sample period (inclusive).
+#' @param gvkeys Optional character vector of gvkeys to filter on. If NULL
+#'   (default), all firms are returned.
 #'
 #' @return A tibble with columns: gvkey, cik, datadate, seq, ceq, at, lt,
 #'   txditc, txdb, itcb, pstkrv, pstkl, pstk, capx, oancf, sale, cogs, xint, xrd, xsga.
@@ -40,8 +42,15 @@ utils::globalVariables(c(
 #'   start_date = "2000-01-01",
 #'   end_date = "2023-12-31"
 #' )
+#'
+#' # Fetch specific firms
+#' compustat <- fetch_compustat_annual(
+#'   start_date = "2000-01-01",
+#'   end_date = "2023-12-31",
+#'   gvkeys = c("001690", "002968")
+#' )
 #' }
-fetch_compustat_annual <- function(start_date, end_date) {
+fetch_compustat_annual <- function(start_date, end_date, gvkeys = NULL) {
   dbs <- create_connections(include_wrds = TRUE)
   wrds <- dbs$wrds
   on.exit(purrr::walk(dbs, DBI::dbDisconnect))
@@ -51,7 +60,8 @@ fetch_compustat_annual <- function(start_date, end_date) {
 
   funda_db <- tbl(wrds, I("comp.funda"))
 
-  compustat_annual <- funda_db |>
+
+  query <- funda_db |>
     filter(
       indfmt == "INDL" &
         datafmt == "STD" &
@@ -59,7 +69,13 @@ fetch_compustat_annual <- function(start_date, end_date) {
         curcd == "USD" &
         datadate >= start_date &
         datadate <= end_date
-    ) |>
+    )
+
+  if (!is.null(gvkeys)) {
+    query <- query |> filter(gvkey %in% gvkeys)
+  }
+
+  compustat_annual <- query |>
     select(
       gvkey,
       cik,
