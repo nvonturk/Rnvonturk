@@ -16,7 +16,7 @@ fetch_compustat_annual(start_date, end_date, gvkeys = NULL)
 }
 \value{
 A tibble with columns: gvkey, cik, datadate, seq, ceq, at, lt,
-txditc, txdb, itcb, pstkrv, pstkl, pstk, capx, oancf, sale, cogs, xint, xrd, xsga.
+txditc, txdb, itcb, pstkrv, pstkl, pstk, capx, oancf, sale, cogs, xint, xrd, xsga, emp.
 }
 \description{
 Retrieves annual accounting data from the Compustat Fundamentals Annual

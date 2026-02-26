@@ -3,7 +3,7 @@ utils::globalVariables(c(
   "indfmt", "datafmt", "consol", "curcd", "datadate",
   "gvkey", "cik", "seq", "ceq", "at", "lt", "txditc", "txdb", "itcb",
   "pstkrv", "pstkl", "pstk", "capx", "oancf", "sale", "cogs",
-  "xint", "xrd", "xsga"
+  "xint", "xrd", "xsga", "emp"
 ))
 
 #' Fetch Compustat Annual Fundamentals
@@ -31,7 +31,7 @@ utils::globalVariables(c(
 #'   (default), all firms are returned.
 #'
 #' @return A tibble with columns: gvkey, cik, datadate, seq, ceq, at, lt,
-#'   txditc, txdb, itcb, pstkrv, pstkl, pstk, capx, oancf, sale, cogs, xint, xrd, xsga.
+#'   txditc, txdb, itcb, pstkrv, pstkl, pstk, capx, oancf, sale, cogs, xint, xrd, xsga, emp.
 #'
 #' @importFrom dplyr tbl filter select collect
 #' @export
@@ -96,7 +96,8 @@ fetch_compustat_annual <- function(start_date, end_date, gvkeys = NULL) {
       cogs,
       xint,
       xrd,
-      xsga
+      xsga,
+      emp
     ) |>
     collect()
 
