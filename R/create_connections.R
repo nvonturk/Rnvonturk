@@ -1,33 +1,42 @@
 #' Create Database Connections
 #'
-#' Establishes connections to SQL Server and optionally to WRDS and SFTP servers.
+#' Establishes connections to SQL Server, WRDS, and/or SFTP servers.
 #'
+#' @param include_sql Logical. If TRUE, creates SQL Server database connection.
 #' @param include_wrds Logical. If TRUE, creates WRDS database connection.
 #' @param include_sftp Logical. If TRUE, creates SFTP connection.
 #' @param sftp_folder Character. Folder path for SFTP connection.
 #'
 #' @return A list containing connection objects.
 #' @export
-create_connections <- function(include_wrds = FALSE,
+create_connections <- function(include_sql = FALSE,
+                               include_wrds = FALSE,
                                include_sftp = FALSE,
                                sftp_folder = NULL) {
 
-  dotenv::load_dot_env()
-
-  if (!nzchar(Sys.getenv("mssql_uid")) || !nzchar(Sys.getenv("mssql_pw"))) {
-    stop("mssql_uid / mssql_pw not set in environment variables")
+  if (!include_sql && !include_wrds && !include_sftp) {
+    warning("No connections requested. Set at least one of include_sql, include_wrds, or include_sftp to TRUE.")
+    return(list())
   }
 
-  sql_conn <- DBI::dbConnect(
-    odbc::odbc(),
-    Driver = "{ODBC Driver 17 for SQL Server}",
-    Server = Sys.getenv("sqlserver"),
-    Database = "master",
-    UID = Sys.getenv("mssql_uid"),
-    PWD = Sys.getenv("mssql_pw")
-  )
+  dotenv::load_dot_env()
 
-  connections <- list(sql_conn = sql_conn)
+  connections <- list()
+
+  if (isTRUE(include_sql)) {
+    if (!nzchar(Sys.getenv("mssql_uid")) || !nzchar(Sys.getenv("mssql_pw"))) {
+      stop("mssql_uid / mssql_pw not set in environment variables")
+    }
+
+    connections$sql_conn <- DBI::dbConnect(
+      odbc::odbc(),
+      Driver = "{ODBC Driver 17 for SQL Server}",
+      Server = Sys.getenv("sqlserver"),
+      Database = "master",
+      UID = Sys.getenv("mssql_uid"),
+      PWD = Sys.getenv("mssql_pw")
+    )
+  }
 
   if (isTRUE(include_wrds)) {
     if (!nzchar(Sys.getenv("WRDS_USER")) || !nzchar(Sys.getenv("WRDS_PASSWORD"))) {

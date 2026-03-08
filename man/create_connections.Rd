@@ -5,12 +5,15 @@
 \title{Create Database Connections}
 \usage{
 create_connections(
+  include_sql = FALSE,
   include_wrds = FALSE,
   include_sftp = FALSE,
   sftp_folder = NULL
 )
 }
 \arguments{
+\item{include_sql}{Logical. If TRUE, creates SQL Server database connection.}
+
 \item{include_wrds}{Logical. If TRUE, creates WRDS database connection.}
 
 \item{include_sftp}{Logical. If TRUE, creates SFTP connection.}
@@ -21,5 +24,5 @@ create_connections(
 A list containing connection objects.
 }
 \description{
-Establishes connections to SQL Server and optionally to WRDS and SFTP servers.
+Establishes connections to SQL Server, WRDS, and/or SFTP servers.
 }
