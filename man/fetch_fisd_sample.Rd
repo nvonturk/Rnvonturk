@@ -9,8 +9,10 @@ fetch_fisd_sample()
 \value{
 A data frame containing bond characteristics including complete_cusip,
 maturity, offering_amt, offering_date, dated_date, interest_frequency,
-coupon, last_interest_date, issue_id, issuer_id, sic_code, action_type
-(B=matured, E=exchanged, IM=called), and effective_date of the action.
+coupon, last_interest_date, first_interest_date, day_count_basis,
+principal_amt, bond_type, coupon_type, issue_id, issuer_id, sic_code,
+action_type (B=matured, E=exchanged, IM=called), and effective_date of
+the action.
 }
 \description{
 Retrieves a filtered sample of corporate bond data from the FISD (Fixed Income

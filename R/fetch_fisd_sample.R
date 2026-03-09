@@ -8,7 +8,9 @@ utils::globalVariables(c(
   "convertible", "exchange", "putable", "unit_deal", "exchangeable",
   "perpetual", "preferred_security", "complete_cusip", "maturity",
   "offering_amt", "offering_date", "dated_date", "coupon",
-  "last_interest_date", "issue_id", "issuer_id", "sic_code",
+  "last_interest_date", "first_interest_date",
+  "day_count_basis", "principal_amt",
+  "issue_id", "issuer_id", "sic_code",
   "country_domicile", "action_type", "effective_date"
 ))
 
@@ -36,8 +38,10 @@ utils::globalVariables(c(
 #'
 #' @return A data frame containing bond characteristics including complete_cusip,
 #'   maturity, offering_amt, offering_date, dated_date, interest_frequency,
-#'   coupon, last_interest_date, issue_id, issuer_id, sic_code, action_type
-#'   (B=matured, E=exchanged, IM=called), and effective_date of the action.
+#'   coupon, last_interest_date, first_interest_date, day_count_basis,
+#'   principal_amt, bond_type, coupon_type, issue_id, issuer_id, sic_code,
+#'   action_type (B=matured, E=exchanged, IM=called), and effective_date of
+#'   the action.
 #'
 #' @importFrom dplyr tbl filter select collect inner_join join_by group_by ungroup union_all distinct left_join
 #' @export
@@ -102,9 +106,11 @@ fetch_fisd_sample <- function() {
     select(
       complete_cusip, maturity,
       offering_amt, offering_date,
-      dated_date, 
+      dated_date,
       interest_frequency, coupon,
-      last_interest_date, 
+      last_interest_date, first_interest_date,
+      day_count_basis, principal_amt,
+      bond_type, coupon_type,
       issue_id, issuer_id
     ) |>
     collect()
