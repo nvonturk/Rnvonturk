@@ -6,20 +6,22 @@
 #' @param include_wrds Logical. If TRUE, creates WRDS database connection.
 #' @param include_sftp Logical. If TRUE, creates SFTP connection.
 #' @param sftp_folder Character. Folder path for SFTP connection.
+#' @param env_file Character. Path to a .env file. Defaults to ".env" in the current working directory.
 #'
 #' @return A list containing connection objects.
 #' @export
 create_connections <- function(include_sql = FALSE,
                                include_wrds = FALSE,
                                include_sftp = FALSE,
-                               sftp_folder = NULL) {
+                               sftp_folder = NULL,
+                               env_file = ".env") {
 
   if (!include_sql && !include_wrds && !include_sftp) {
     warning("No connections requested. Set at least one of include_sql, include_wrds, or include_sftp to TRUE.")
     return(list())
   }
 
-  dotenv::load_dot_env()
+  dotenv::load_dot_env(file = env_file)
 
   connections <- list()
 

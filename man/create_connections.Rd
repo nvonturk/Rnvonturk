@@ -8,7 +8,8 @@ create_connections(
   include_sql = FALSE,
   include_wrds = FALSE,
   include_sftp = FALSE,
-  sftp_folder = NULL
+  sftp_folder = NULL,
+  env_file = ".env"
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ create_connections(
 \item{include_sftp}{Logical. If TRUE, creates SFTP connection.}
 
 \item{sftp_folder}{Character. Folder path for SFTP connection.}
+
+\item{env_file}{Character. Path to a .env file. Defaults to ".env" in the current working directory.}
 }
 \value{
 A list containing connection objects.
