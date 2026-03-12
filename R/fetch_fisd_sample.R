@@ -123,7 +123,7 @@ fetch_fisd_sample <- function() {
   
   fisd <- fisd |>
     inner_join(fisd_issuer, join_by(issuer_id)) |>
-    filter(country_domicile == "USA") |>
+    filter(country_domicile %in% c("USA", "US", "UNITED STATES")) |>
     select(-country_domicile)
 
   amt_out <- tbl(wrds, dbplyr::in_schema("fisd", "fisd_amount_outstanding"))
