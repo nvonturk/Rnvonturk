@@ -1,6 +1,6 @@
 Package: Rnvonturk
 Title: What the Package Does (One Line, Title Case)
-Version: 1.5.0
+Version: 1.5.1
 Authors@R:
     person("Nick", "Turkovich", , "nvonturk@mit.edu", role = c("aut", "cre"))
 Description: Personal R utilities package for fixed income and empirical finance
@@ -17,6 +17,7 @@ Imports:
     dplyr,
     dotenv,
     fredr,
+    ggplot2,
     httr2,
     lubridate,
     odbc,
@@ -27,7 +28,8 @@ Imports:
     sftp,
     stringr,
     tibble,
-    tidyr
+    tidyr,
+    tis
 Suggests:
     dbplyr
 Remotes:

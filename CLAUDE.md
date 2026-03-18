@@ -43,6 +43,7 @@ pak::pak("nvonturk/Rnvonturk")
 - `R/get_bls_dates.R` — BLS macro announcement release dates
 - `R/get_daily_returns.R` — CRSP daily stock returns retrieval
 - `R/get_fomc_dates.R` — FOMC meeting dates and times
+- `R/nber_recessions.R` — NBER recession dates and ggplot2 shading layer
 
 **Environment-based credentials**: Database credentials are loaded from a `.env` file at the project root (not tracked in git). Required variables:
 - `mssql_uid`, `mssql_pw` — SQL Server credentials

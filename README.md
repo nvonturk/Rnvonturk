@@ -12,6 +12,8 @@ Personal R utilities package for fixed income and empirical finance research. Pr
 - `get_bls_release_dates()` — downloads BLS macro announcement release dates (Employment Situation, CPI, PPI) from the FRED API.
 - `get_daily_returns()` — retrieves daily stock returns from CRSP via WRDS, filtered to common US equities, with parallel batch processing.
 - `get_fomc_dates()` — downloads FOMC meeting dates and announcement times from SF Fed Excel files.
+- `get_nber_recessions()` — returns NBER business cycle recession start and end dates.
+- `nber_shading()` — adds light-blue NBER recession shading to ggplot2 time-series plots.
 
 ## Acknowledgments
 
