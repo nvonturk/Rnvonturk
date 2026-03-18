@@ -79,6 +79,7 @@ nber_shading <- function(fill = "lightblue", alpha = 0.5) {
     mapping  = ggplot2::aes(),
     position = "identity",
     inherit.aes = TRUE,
+    show.legend = FALSE,
     params   = list(fill = fill, alpha = alpha, na.rm = TRUE)
   )
 }
